@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Child Contact test" icon-name="custom:custom16">
+        <!-- <lightning-button-icon icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon> -->
+            <template if:false={submit}>
+                <lightning-record-edit-form object-api-name={childContactObject} onsubmit={handleSubmit} onsuccess={handleSuccess}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input-field field-name={relatedContactField}></lightning-input-field>
+                            <lightning-input-field field-name={nameField}></lightning-input-field>
+                            <lightning-input-field field-name={phoneField}></lightning-input-field>
+                            <lightning-input-field field-name={emailField}></lightning-input-field>
+                            <lightning-input-field field-name={addressField}></lightning-input-field>
+                            <!-- <lightning-input-field field-name={schoolField}></lightning-input-field>
+                            <lightning-input-field field-name={classField}></lightning-input-field> -->
+                        </div>
+                    </div>
+                    <div class="slds-align_absolute-center slds-p-around_medium">
+                        <lightning-button class="slds-m-around_xx-small" type="submit" variant="brand" label="Create child contact"></lightning-button>
+                        <lightning-button class="slds-m-around_xx-small" label="Cancel" onclick={handleReset}></lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </template>
+            <template if:true={submit}>
+                <div class="exampleHolder">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+            <lightning-button class="slds-m-around_xx-small" variant="brand" label="nav" onclick={navigateToRec}></lightning-button>
+    </lightning-card>
+</template>
